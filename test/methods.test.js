@@ -14,4 +14,22 @@ describe('Matrix Methods: Unit Tests', () => {
 
     done();
   });
+
+  it('set() - should set the values at a particular row', (done) => {
+    expect(matrix.fill(0).set([1,], 100).entries).toEqual([[0, 0], [100, 100]]);
+
+    done();
+  });
+
+  it('set() - should set the values at a particular column', (done) => {
+    expect(matrix.fill(0).set([, 0], 100).entries).toEqual([[100, 0], [100, 0]]);
+
+    done();
+  });
+
+  it('set() - should set all the values in the matrix', (done) => {
+    expect(matrix.fill(0).set([], 100).entries).toEqual([[100, 100], [100, 100]]);
+
+    done();
+  });
 });
