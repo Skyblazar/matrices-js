@@ -8,4 +8,10 @@ describe('Matrix Methods: Unit Tests', () => {
 
     done();
   });
+
+  it('set() - should set the value at a particular index', (done) => {
+    expect(matrix.fill(0).set([0, 0], 100).entries).toEqual([[100, 0], [0, 0]]);
+
+    done();
+  });
 });
