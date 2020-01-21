@@ -3,31 +3,31 @@ const Matrix = require('../index');
 describe('Matrix Methods: Unit Tests', () => {
   const matrix = new Matrix(2, 2);
 
-  it('fill() - should fill matrix with number', (done) => {
+  it('fill() - should fill matrix with a number', (done) => {
     expect(matrix.fill(3).entries).toEqual([[3, 3], [3, 3]]);
 
     done();
   });
 
-  it('set() - should set the value at a particular index', (done) => {
+  it('set() - should set the value at a particular index to a number', (done) => {
     expect(matrix.fill(0).set([0, 0], 100).entries).toEqual([[100, 0], [0, 0]]);
 
     done();
   });
 
-  it('set() - should set the values at a particular row', (done) => {
+  it('set() - should set the values at a particular row to a number', (done) => {
     expect(matrix.fill(0).set([1,], 100).entries).toEqual([[0, 0], [100, 100]]);
 
     done();
   });
 
-  it('set() - should set the values at a particular column', (done) => {
+  it('set() - should set the values at a particular column to a number', (done) => {
     expect(matrix.fill(0).set([, 0], 100).entries).toEqual([[100, 0], [100, 0]]);
 
     done();
   });
 
-  it('set() - should set all the values in the matrix', (done) => {
+  it('set() - should set all the values in the matrix to a number', (done) => {
     expect(matrix.fill(0).set([], 100).entries).toEqual([[100, 100], [100, 100]]);
 
     done();
