@@ -56,12 +56,24 @@ class Matrix {
     return this;
   }
 
+  transposeClone() {
+    const newMatrix = new Matrix(this.cols, this.rows);
+
+    for (let i = 0; i < this.cols; i++) {
+      for (let j = 0; j < this.rows; j++) {
+        newMatrix.entries[i][j] = this.entries[j][i];
+      }
+    }
+
+    return newMatrix;
+  }
+
   toString() {
     return `Matrix(rows: ${this.rows}, cols: ${this.cols}, entries: ${this.entries})`;
   }
 }
 
-const m = new Matrix(3, 2).fill(0).set([, 0], 1);
-console.log(JSON.stringify(m), m.transpose());
+const m = new Matrix(3, 2).fill(3).set([, 0], 1);
+console.log(m, m.transposeClone());
 
 module.exports = Matrix;
