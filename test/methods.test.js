@@ -32,4 +32,10 @@ describe('Matrix Methods: Unit Tests', () => {
 
     done();
   });
+
+  it('transpose() - should transpose matrix', (done) => {
+    expect(matrix.fill(0).set([, 0], 100).transpose().entries).toEqual([[100, 100], [0, 0]]);
+
+    done();
+  });
 });
