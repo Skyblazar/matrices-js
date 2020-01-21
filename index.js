@@ -27,3 +27,5 @@ class Matrix {
 }
 
 console.log(new Matrix(4, 20).fill(2));
+
+module.exports = Matrix;
