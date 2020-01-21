@@ -40,6 +40,9 @@ class Matrix {
     return this;
   }
 
+  /**
+   * Transposes this matrix
+   */
   transpose() {
     const newEntries = [];
 
@@ -56,6 +59,9 @@ class Matrix {
     return this;
   }
 
+  /**
+   * Creates a new transpose matrix
+   */
   transposeClone() {
     const newMatrix = new Matrix(this.cols, this.rows);
 
