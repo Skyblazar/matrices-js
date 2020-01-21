@@ -89,4 +89,11 @@ describe('Matrix Methods: Unit Tests', () => {
 
     done();
   });
+
+  it('scalarSubtract() - should subtract a number from all entries of this matrix', (done) => {
+    expect(matrix.fill(0).set([], 100).scalarSubtract(200).entries)
+      .toEqual([[-100, -100], [-100, -100]]);
+
+    done();
+  });
 });
