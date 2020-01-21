@@ -142,6 +142,20 @@ class Matrix {
   }
 
   /**
+   * Subtracts a number from all entries of this matrix
+   * @param {number} num 
+   */
+  scalarSubtract(num) {
+    for (let i = 0; i < this.rows; i++) {
+      for (let j = 0; j < this.cols; j++) {
+        this.entries[i][j] -= num;
+      }
+    }
+
+    return this;
+  }
+
+  /**
    * Returns a string representation of this matrix
    */
   toString() {
@@ -150,6 +164,6 @@ class Matrix {
 }
 
 const m = new Matrix(2, 2).fill(3);
-console.log(m.scalarAdd(2));
+console.log(m.scalarSubtract(2));
 
 module.exports = Matrix;
