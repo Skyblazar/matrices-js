@@ -27,7 +27,15 @@ class Matrix {
    */
   set(index, num) {
     const [i, j] = index;
-    this.entries[i][j] = num;
+
+    if (i === undefined && j !== undefined)
+      this.entries.forEach((row) => row[j] = num);
+    else if (i !== undefined && j === undefined)
+      this.entries[i].fill(num);
+    else if (i === undefined && j === undefined)
+      this.fill(num);
+    else
+      this.entries[i][j] = num;
 
     return this;
   }
@@ -38,6 +46,6 @@ class Matrix {
 }
 
 const m = new Matrix(2, 2);
-console.log(m.set([1, 0], 100));
+console.log(m.set([], 100));
 
 module.exports = Matrix;
