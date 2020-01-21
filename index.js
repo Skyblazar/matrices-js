@@ -41,6 +41,25 @@ class Matrix {
   }
 
   /**
+  * Sets the entries of this matrix
+  * @param {number[][]} entries 
+  */
+  setMatrix(entries) {
+    if (entries.length !== this.rows)
+      throw Error(`The number of rows for entries should be: ${this.rows}`);
+    if (entries[0] && entries[0].length !== this.cols)
+      throw Error(`The number of columns for entries should be: ${this.cols}`);
+
+    for (let i = 0; i < this.rows; i++) {
+      for (let j = 0; j < this.cols; j++) {
+        this.entries[i][j] = entries[i][j];
+      }
+    }
+
+    return this;
+  }
+
+  /**
    * Transposes this matrix
    */
   transpose() {
@@ -82,7 +101,7 @@ class Matrix {
   }
 }
 
-const m = new Matrix(3, 2).fill(3).set([, 0], 1);
-console.log(m, m.transposeClone());
+const m = new Matrix(2, 2).fill(3).set([, 0], 1);
+console.log(m.setMatrix([[1, 2], [3, 4]]));
 
 module.exports = Matrix;
