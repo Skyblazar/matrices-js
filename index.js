@@ -7,8 +7,7 @@ class Matrix {
     /** 
      * @type {number[][]} entries 
      */
-    this.entries = new Array(rows);
-    this.entries.fill(new Array(cols));
+    this.entries = new Array(rows).fill(0).map(() => new Array(cols).fill(0))
   }
 
   /**
@@ -38,7 +37,7 @@ class Matrix {
   }
 }
 
-const m = new Matrix(2, 2).fill(2);
-console.log(m.set([0, 1], 100));
+const m = new Matrix(2, 2);
+console.log(m.set([1, 0], 100));
 
 module.exports = Matrix;
