@@ -40,12 +40,28 @@ class Matrix {
     return this;
   }
 
+  transpose() {
+    const newEntries = [];
+
+    for (let i = 0; i < this.cols; i++) {
+      newEntries[i] = [];
+      for (let j = 0; j < this.rows; j++) {
+        newEntries[i][j] = this.entries[j][i];
+      }
+    }
+
+    this.entries = newEntries;
+    [this.rows, this.cols] = [this.cols, this.rows];
+
+    return this;
+  }
+
   toString() {
     return `Matrix(rows: ${this.rows}, cols: ${this.cols}, entries: ${this.entries})`;
   }
 }
 
-const m = new Matrix(2, 2);
-console.log(m.set([], 100));
+const m = new Matrix(3, 2).fill(0).set([, 0], 1);
+console.log(JSON.stringify(m), m.transpose());
 
 module.exports = Matrix;
