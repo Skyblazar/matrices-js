@@ -68,4 +68,11 @@ describe('Matrix Methods: Unit Tests', () => {
 
     done();
   });
+
+  it('add() - should add another matrix to this matrix', (done) => {
+    expect(matrix.fill(0).set([], 100).add(new Matrix(2, 2).fill(100)).entries)
+      .toEqual([[200, 200], [200, 200]]);
+
+    done();
+  });
 });
