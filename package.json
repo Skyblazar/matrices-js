@@ -1,0 +1,9 @@
+{
+  "name": "matrices-js",
+  "version": "1.0.0",
+  "description": "A fast library for working with matrices",
+  "main": "index.js",
+  "repository": "https://github.com/elishaking/matrices-js.git",
+  "author": "King Elisha <ek.chibueze@gmail.com>",
+  "license": "MIT"
+}
