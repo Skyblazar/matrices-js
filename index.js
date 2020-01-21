@@ -94,6 +94,23 @@ class Matrix {
   }
 
   /**
+   * Adds another matrix to this matrix
+   * @param {Matrix} matrix 
+   */
+  add(matrix) {
+    if (matrix.rows !== this.rows || matrix.cols !== this.cols)
+      throw Error(`The argument matrix must have rows: ${this.rows} and columns: ${this.cols}`);
+
+    for (let i = 0; i < this.rows; i++) {
+      for (let j = 0; j < this.cols; j++) {
+        this.entries[i][j] += matrix.entries[i][j];
+      }
+    }
+
+    return this;
+  }
+
+  /**
    * Returns a string representation of this matrix
    */
   toString() {
@@ -101,7 +118,7 @@ class Matrix {
   }
 }
 
-const m = new Matrix(2, 2).fill(3).set([, 0], 1);
-console.log(m.setMatrix([[1, 2], [3, 4]]));
+const m = new Matrix(2, 2).fill(3);
+console.log(m.add(m));
 
 module.exports = Matrix;
