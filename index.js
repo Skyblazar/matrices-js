@@ -21,7 +21,7 @@ class Matrix {
   }
 
   /**
-   * Set the value at a particular index
+   * Set the value at a particular index, row, column or entire matrix
    * @param {number[]} index 
    * @param {number} num 
    */
