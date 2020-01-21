@@ -75,4 +75,11 @@ describe('Matrix Methods: Unit Tests', () => {
 
     done();
   });
+
+  it('subtract() - should subtract another matrix from this matrix', (done) => {
+    expect(matrix.fill(0).set([], 100).subtract(new Matrix(2, 2).fill(100)).entries)
+      .toEqual([[0, 0], [0, 0]]);
+
+    done();
+  });
 });
