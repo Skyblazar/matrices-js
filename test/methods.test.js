@@ -42,6 +42,9 @@ describe('Matrix Methods: Unit Tests', () => {
     expect(matrixTranspose.rows).toEqual(cols);
     expect(matrixTranspose.cols).toEqual(rows);
 
+    expect(newMatrix.rows).toEqual(cols);
+    expect(newMatrix.cols).toEqual(rows);
+
     done();
   });
 
