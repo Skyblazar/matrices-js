@@ -82,4 +82,11 @@ describe('Matrix Methods: Unit Tests', () => {
 
     done();
   });
+
+  it('scalarAdd() - should add a number to all entries of this matrix', (done) => {
+    expect(matrix.fill(0).set([], 100).scalarAdd(200).entries)
+      .toEqual([[300, 300], [300, 300]]);
+
+    done();
+  });
 });
