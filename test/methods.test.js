@@ -44,4 +44,19 @@ describe('Matrix Methods: Unit Tests', () => {
 
     done();
   });
+
+  it('transposeClone() - should transpose original matrix and return a new one', (done) => {
+    const rows = 3, cols = 2;
+    const newMatrix = new Matrix(rows, cols).fill(0).set([, 0], 100);
+    const matrixTranspose = newMatrix.transposeClone();
+
+    expect(matrixTranspose.entries).toEqual([[100, 100, 100], [0, 0, 0]]);
+    expect(matrixTranspose.rows).toEqual(cols);
+    expect(matrixTranspose.cols).toEqual(rows);
+
+    expect(newMatrix.rows).toEqual(rows);
+    expect(newMatrix.cols).toEqual(cols);
+
+    done();
+  });
 });
