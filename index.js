@@ -21,11 +21,24 @@ class Matrix {
     return this;
   }
 
+  /**
+   * Set the value at a particular index
+   * @param {number[]} index 
+   * @param {number} num 
+   */
+  set(index, num) {
+    const [i, j] = index;
+    this.entries[i][j] = num;
+
+    return this;
+  }
+
   toString() {
     return `Matrix(rows: ${this.rows}, cols: ${this.cols}, entries: ${this.entries})`;
   }
 }
 
-console.log(new Matrix(4, 20).fill(2));
+const m = new Matrix(2, 2).fill(2);
+console.log(m.set([0, 1], 100));
 
 module.exports = Matrix;
