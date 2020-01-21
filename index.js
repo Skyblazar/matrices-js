@@ -156,6 +156,19 @@ class Matrix {
   }
 
   /**
+   * multiply a number from all entries of this matrix
+   * @param {number} num 
+   */  
+  scalarMult(num) {
+    for (let i = 0; i < this.rows; i++) {
+      for (let j = 0; j < this.cols; j++) {
+        this.entries[i][j] *= num;
+      }
+    }
+
+    return this;
+  }
+  /**
    * Returns a string representation of this matrix
    */
   toString() {
