@@ -34,7 +34,13 @@ describe('Matrix Methods: Unit Tests', () => {
   });
 
   it('transpose() - should transpose matrix', (done) => {
-    expect(matrix.fill(0).set([, 0], 100).transpose().entries).toEqual([[100, 100], [0, 0]]);
+    const rows = 3, cols = 2;
+    const newMatrix = new Matrix(rows, cols).fill(0).set([, 0], 100);
+    const matrixTranspose = newMatrix.transpose();
+
+    expect(matrixTranspose.entries).toEqual([[100, 100, 100], [0, 0, 0]]);
+    expect(matrixTranspose.rows).toEqual(cols);
+    expect(matrixTranspose.cols).toEqual(rows);
 
     done();
   });
