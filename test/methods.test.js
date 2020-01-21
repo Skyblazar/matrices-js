@@ -33,6 +33,12 @@ describe('Matrix Methods: Unit Tests', () => {
     done();
   });
 
+  it('setMatrix() - should set all the values in the matrix to an array of entries', (done) => {
+    expect(matrix.fill(0).setMatrix([[1, 2], [3, 4]]).entries).toEqual([[1, 2], [3, 4]]);
+
+    done();
+  });
+
   it('transpose() - should transpose matrix', (done) => {
     const rows = 3, cols = 2;
     const newMatrix = new Matrix(rows, cols).fill(0).set([, 0], 100);
