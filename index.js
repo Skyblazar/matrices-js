@@ -11,7 +11,7 @@ class Matrix {
   }
 
   /**
-   * Fill matrix with a particular number
+   * Fills this matrix with a particular number
    * @param {number} num
    */
   fill(num) {
@@ -21,7 +21,7 @@ class Matrix {
   }
 
   /**
-   * Set the value at a particular index, row, column or entire matrix
+   * Sets the value at a particular index, row, column or entire matrix
    * @param {number[]} index 
    * @param {number} num 
    */
@@ -74,6 +74,9 @@ class Matrix {
     return newMatrix;
   }
 
+  /**
+   * Returns a string representation of this matrix
+   */
   toString() {
     return `Matrix(rows: ${this.rows}, cols: ${this.cols}, entries: ${this.entries})`;
   }
