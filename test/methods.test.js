@@ -77,4 +77,9 @@ describe('Matrix Methods: Unit Tests', () => {
     expect(matrix.fill(1).scalarMult(2).entries)
       .toEqual([[2, 2], [2, 2]]);
   });
+
+  it('isSquare() - should check if this matrix is a Square matrix', () => {
+    expect(matrix.fill(0).isSquare()).toBe(true);
+    expect(new Matrix(3, 7).fill(0).isSquare()).toBe(false);
+  });
 });
