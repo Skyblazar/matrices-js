@@ -82,4 +82,9 @@ describe('Matrix Methods: Unit Tests', () => {
     expect(matrix.fill(0).isSquare()).toBe(true);
     expect(new Matrix(3, 7).fill(0).isSquare()).toBe(false);
   });
+
+  it('isSameSizeAs() - should check if this matrix has the same size as another matrix', () => {
+    expect(matrix.fill(0).isSameSizeAs(new Matrix(2, 2))).toBe(true);
+    expect(matrix.fill(0).isSameSizeAs(new Matrix(2, 10))).toBe(false);
+  });
 });
