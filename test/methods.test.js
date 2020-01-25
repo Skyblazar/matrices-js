@@ -72,4 +72,9 @@ describe('Matrix Methods: Unit Tests', () => {
     expect(matrix.fill(0).set([], 100).scalarSubtract(200).entries)
       .toEqual([[-100, -100], [-100, -100]]);
   });
+
+  it('scalarMult() - should multiply all entries of this matrix with a number', () => {
+    expect(matrix.fill(1).scalarMult(2).entries)
+      .toEqual([[2, 2], [2, 2]]);
+  });
 });
