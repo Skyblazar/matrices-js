@@ -156,7 +156,7 @@ class Matrix {
   }
 
   /**
-   * multiply a number from all entries of this matrix
+   * multiply all entries of this matrix with a number
    * @param {number} num 
    */  
   scalarMult(num) {
