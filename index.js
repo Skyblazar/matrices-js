@@ -185,6 +185,23 @@ class Matrix {
   }
 
   /**
+   * Checks if this matrix is an identity matrix
+   */
+  isEye() {
+    for (let i = 0; i < this.rows; i++) {
+      for (let j = 0; j < this.cols; j++) {
+        if (i === j && this.entries[i][j] !== 1)
+          return false;
+
+        if (i !== j && this.entries[i][j] !== 0)
+          return false;
+      }
+    }
+
+    return true;
+  }
+
+  /**
    * Returns a string representation of this matrix
    */
   toString() {
@@ -192,7 +209,7 @@ class Matrix {
   }
 }
 
-const m = new Matrix(2, 2).fill(3);
-console.log(m.scalarSubtract(2));
+const m = new Matrix(2, 2).setMatrix([[1, 0], [0, 1]]);
+console.log(m, m.isEye());
 
 module.exports = Matrix;
