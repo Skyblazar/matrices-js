@@ -177,6 +177,14 @@ class Matrix {
   }
 
   /**
+   * Checks if this matrix has the same size as another matrix
+   * @param {Matrix} matrix 
+   */
+  isSameSizeAs(matrix) {
+    return this.rows === matrix.rows && this.cols === matrix.cols;
+  }
+
+  /**
    * Returns a string representation of this matrix
    */
   toString() {
