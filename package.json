@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node index.js",
-    "test": "jest --silent"
+    "test": "jest"
   },
   "devDependencies": {
     "jest": "24.9.0"
