@@ -158,7 +158,7 @@ class Matrix {
   /**
    * multiply all entries of this matrix with a number
    * @param {number} num 
-   */  
+   */
   scalarMult(num) {
     for (let i = 0; i < this.rows; i++) {
       for (let j = 0; j < this.cols; j++) {
@@ -168,6 +168,14 @@ class Matrix {
 
     return this;
   }
+
+  /**
+   * Checks if this is a square matrix
+   */
+  isSquare() {
+    return this.rows === this.cols;
+  }
+
   /**
    * Returns a string representation of this matrix
    */
