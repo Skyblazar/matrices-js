@@ -101,7 +101,10 @@ describe('Matrix Methods: Unit Tests', () => {
   });
 
   it('min() - should get the first minimum of this matrix', () => {
-    expect(new Matrix(2, 2).setMatrix([[1, 2], [3, 4]]).min()).toEqual(1);
+    expect(new Matrix(2, 2).setMatrix([[1, 2], [3, 4]]).min()).toEqual({
+      value: 1,
+      index: [0, 0]
+    });
   });
 
   it('max() - should get the first maximum of this matrix', () => {
