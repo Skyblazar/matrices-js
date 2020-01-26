@@ -99,4 +99,8 @@ describe('Matrix Methods: Unit Tests', () => {
 
     // todo: add more tests here
   });
+
+  it('min() - should get the first minimum of this matrix', () => {
+    expect(new Matrix(2, 2).setMatrix([[1, 2], [3, 4]]).min()).toEqual(1);
+  });
 });

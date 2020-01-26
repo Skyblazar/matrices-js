@@ -202,6 +202,22 @@ class Matrix {
   }
 
   /**
+   * Gets the first minimum value of this matrix
+   */
+  min() {
+    let min = this.entries[0][0];
+
+    for (let i = 0; i < this.rows; i++) {
+      for (let j = 0; j < this.cols; j++) {
+        if (this.entries[i][j] < min)
+          min = this.entries[i][j];
+      }
+    }
+
+    return min;
+  }
+
+  /**
    * Create Identity matrix
    * @param {number} size 
    */
