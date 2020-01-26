@@ -27,6 +27,12 @@ describe('Matrix Methods: Unit Tests', () => {
     expect(matrix.fill(0).setMatrix([[1, 2], [3, 4]]).entries).toEqual([[1, 2], [3, 4]]);
   });
 
+  it('sum() - should sum a particular row, column or entire matrix', () => {
+    expect(matrix.fill(0).setMatrix([[1, 2], [3, 4]]).sum([])).toEqual(10);
+    expect(matrix.fill(0).setMatrix([[1, 2], [3, 4]]).sum([1,])).toEqual(7);
+    expect(matrix.fill(0).setMatrix([[1, 2], [3, 4]]).sum([, 1])).toEqual(6);
+  });
+
   it('transpose() - should transpose matrix', () => {
     const rows = 3, cols = 2;
     const newMatrix = new Matrix(rows, cols).fill(0).set([, 0], 100);

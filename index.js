@@ -60,6 +60,24 @@ class Matrix {
   }
 
   /**
+   * Sums a particular row, column or entire matrix
+   * @param {number[]} index
+   */
+  sum(index) {
+    const [i, j] = index;
+
+    if (i === undefined && j !== undefined)
+      return this.entries.reduce((total, row) => total + row[j], 0);
+    else if (i !== undefined && j === undefined)
+      return this.entries[i].reduce((total, val) => total + val, 0);
+    else if (i === undefined && j === undefined)
+      return this.entries.reduce((total, row) =>
+        total + row.reduce((rowTotal, val) => rowTotal + val, 0), 0);
+
+    return this.entries[i][j];
+  }
+
+  /**
    * Transposes this matrix
    */
   transpose() {
