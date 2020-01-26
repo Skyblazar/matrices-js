@@ -87,4 +87,8 @@ describe('Matrix Methods: Unit Tests', () => {
     expect(matrix.fill(0).isSameSizeAs(new Matrix(2, 2))).toBe(true);
     expect(matrix.fill(0).isSameSizeAs(new Matrix(2, 10))).toBe(false);
   });
+
+  it('eye() - should create identity matrix', () => {
+    expect(Matrix.eye(2).entries).toEqual([[1, 0], [0, 1]]);
+  });
 });

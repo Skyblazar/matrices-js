@@ -202,6 +202,20 @@ class Matrix {
   }
 
   /**
+   * Create Identity matrix
+   * @param {number} size 
+   */
+  static eye(size) {
+    const identityMatrix = new Matrix(size, size).fill(0);
+
+    for (let i = 0; i < size; i++) {
+      identityMatrix.entries[i][i] = 1;
+    }
+
+    return identityMatrix;
+  }
+
+  /**
    * Returns a string representation of this matrix
    */
   toString() {
