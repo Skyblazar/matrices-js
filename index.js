@@ -216,14 +216,30 @@ class Matrix {
   }
 
   /**
+   * Creates a matrix with random entries between min and max
+   * @param {number} rows 
+   * @param {number} cols 
+   * @param {number} min 
+   * @param {number} max 
+   */
+  static random(rows, cols, min, max) {
+    const randomMatrix = new Matrix(rows, cols);
+
+    for (let i = 0; i < rows; i++) {
+      for (let j = 0; j < cols; j++) {
+        randomMatrix.entries[i][j] = Math.floor(min + Math.random() * max);
+      }
+    }
+
+    return randomMatrix;
+  }
+
+  /**
    * Returns a string representation of this matrix
    */
   toString() {
     return `Matrix(rows: ${this.rows}, cols: ${this.cols}, entries: ${this.entries})`;
   }
 }
-
-const m = new Matrix(2, 2).setMatrix([[1, 0], [0, 1]]);
-console.log(m, m.isEye());
 
 module.exports = Matrix;

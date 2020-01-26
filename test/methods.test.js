@@ -91,4 +91,12 @@ describe('Matrix Methods: Unit Tests', () => {
   it('eye() - should create identity matrix', () => {
     expect(Matrix.eye(2).entries).toEqual([[1, 0], [0, 1]]);
   });
+
+  it('random() - should create a matrix with random entries between min and max', () => {
+    const randomMatrix = Matrix.random(2, 2, 1, 10);
+    expect(randomMatrix.rows).toEqual(2);
+    expect(randomMatrix.cols).toEqual(2);
+
+    // todo: add more tests here
+  });
 });
