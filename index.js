@@ -218,6 +218,22 @@ class Matrix {
   }
 
   /**
+   * Gets the first maximum value of this matrix
+   */
+  max() {
+    let max = this.entries[0][0];
+
+    for (let i = 0; i < this.rows; i++) {
+      for (let j = 0; j < this.cols; j++) {
+        if (this.entries[i][j] > max)
+          max = this.entries[i][j];
+      }
+    }
+
+    return max;
+  }
+
+  /**
    * Create Identity matrix
    * @param {number} size 
    */
