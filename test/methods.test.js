@@ -96,6 +96,8 @@ describe('Matrix Methods: Unit Tests', () => {
     const randomMatrix = Matrix.random(2, 2, 1, 10);
     expect(randomMatrix.rows).toEqual(2);
     expect(randomMatrix.cols).toEqual(2);
+    expect(randomMatrix.max().value).toBeLessThanOrEqual(10);
+    expect(randomMatrix.min().value).toBeGreaterThanOrEqual(1);
 
     // todo: add more tests here
   });
