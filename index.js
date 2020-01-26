@@ -228,15 +228,21 @@ class Matrix {
    */
   max() {
     let max = this.entries[0][0];
+    let index = [0, 0];
 
     for (let i = 0; i < this.rows; i++) {
       for (let j = 0; j < this.cols; j++) {
-        if (this.entries[i][j] > max)
+        if (this.entries[i][j] > max) {
           max = this.entries[i][j];
+          index = [i, j];
+        }
       }
     }
 
-    return max;
+    return {
+      value: max,
+      index
+    };
   }
 
   /**
