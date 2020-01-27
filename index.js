@@ -131,6 +131,21 @@ class Matrix {
   }
 
   /**
+   * Creates a new matrix with the square of all entries in this matrix
+   */
+  scalarSquareClone() {
+    const newMatrix = new Matrix(this.cols, this.rows);
+
+    for (let i = 0; i < this.cols; i++) {
+      for (let j = 0; j < this.rows; j++) {
+        newMatrix.entries[i][j] = this.entries[i][j] * this.entries[i][j];
+      }
+    }
+
+    return newMatrix;
+  }
+
+  /**
    * Adds another matrix to this matrix
    * @param {Matrix} matrix 
    */
