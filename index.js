@@ -146,6 +146,20 @@ class Matrix {
   }
 
   /**
+   * Calculates the nth power of all entries in this matrix
+   * @param {number} n 
+   */
+  scalarNthPower(n) {
+    for (let i = 0; i < this.rows; i++) {
+      for (let j = 0; j < this.cols; j++) {
+        this.entries[i][j] = Math.pow(this.entries[i][j], n);
+      }
+    }
+
+    return this;
+  }
+
+  /**
    * Adds another matrix to this matrix
    * @param {Matrix} matrix 
    */

@@ -73,6 +73,12 @@ describe('Matrix Methods: Unit Tests', () => {
     expect(squareMatrix.entries).toEqual([[4, 4], [4, 4]]);
   });
 
+  it('scalarNthPower() - should calculate the nth power of all entries in this matrix', () => {
+    const nthPowerMatrix = new Matrix(2, 2).fill(2).scalarNthPower(3);
+
+    expect(nthPowerMatrix.entries).toEqual([[8, 8], [8, 8]]);
+  });
+
   it('add() - should add another matrix to this matrix', () => {
     expect(matrix.fill(0).set([], 100).add(new Matrix(2, 2).fill(100)).entries)
       .toEqual([[200, 200], [200, 200]]);
