@@ -160,6 +160,22 @@ class Matrix {
   }
 
   /**
+   * Creates a new matrix with the nth power of all entries in this matrix
+   * @param {number} n 
+   */
+  scalarNthPowerClone(n) {
+    const newMatrix = new Matrix(this.cols, this.rows);
+
+    for (let i = 0; i < this.cols; i++) {
+      for (let j = 0; j < this.rows; j++) {
+        newMatrix.entries[i][j] = Math.pow(this.entries[i][j], n);
+      }
+    }
+
+    return newMatrix;
+  }
+
+  /**
    * Adds another matrix to this matrix
    * @param {Matrix} matrix 
    */

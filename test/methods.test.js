@@ -79,6 +79,14 @@ describe('Matrix Methods: Unit Tests', () => {
     expect(nthPowerMatrix.entries).toEqual([[8, 8], [8, 8]]);
   });
 
+  it('scalarNthPowerClone() - should create a new matrix with the nth power of all entries in this matrix', () => {
+    const newMatrix = new Matrix(2, 2).fill(2);
+    const nthPowerMatrix = newMatrix.scalarNthPowerClone(3);
+
+    expect(newMatrix.entries).toEqual([[2, 2], [2, 2]]);
+    expect(nthPowerMatrix.entries).toEqual([[8, 8], [8, 8]]);
+  });
+
   it('add() - should add another matrix to this matrix', () => {
     expect(matrix.fill(0).set([], 100).add(new Matrix(2, 2).fill(100)).entries)
       .toEqual([[200, 200], [200, 200]]);
