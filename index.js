@@ -270,6 +270,22 @@ class Matrix {
   }
 
   /**
+   * Creates a new transpose matrix
+   * @param {Matrix} matrix
+   */
+  static transpose(matrix) {
+    const newMatrix = new Matrix(matrix.cols, matrix.rows);
+
+    for (let i = 0; i < matrix.cols; i++) {
+      for (let j = 0; j < matrix.rows; j++) {
+        newMatrix.entries[i][j] = matrix.entries[j][i];
+      }
+    }
+
+    return newMatrix;
+  }
+
+  /**
    * Create Identity matrix
    * @param {number} size 
    */

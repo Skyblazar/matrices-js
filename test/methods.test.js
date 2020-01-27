@@ -94,6 +94,19 @@ describe('Matrix Methods: Unit Tests', () => {
     expect(matrix.fill(0).isSameSizeAs(new Matrix(2, 10))).toBe(false);
   });
 
+  it('Matrix.transpose() - should return transpose of a matrix', () => {
+    const rows = 3, cols = 2;
+    const newMatrix = new Matrix(rows, cols).fill(0).set([, 0], 100);
+    const matrixTranspose = Matrix.transpose(newMatrix);
+
+    expect(matrixTranspose.entries).toEqual([[100, 100, 100], [0, 0, 0]]);
+    expect(matrixTranspose.rows).toEqual(cols);
+    expect(matrixTranspose.cols).toEqual(rows);
+
+    expect(newMatrix.rows).toEqual(rows);
+    expect(newMatrix.cols).toEqual(cols);
+  });
+
   it('eye() - should create identity matrix', () => {
     expect(Matrix.eye(2).entries).toEqual([[1, 0], [0, 1]]);
   });
