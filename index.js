@@ -218,6 +218,22 @@ class Matrix {
   }
 
   /**
+   * Creates a new matrix with the nth root of all entries in this matrix
+   * @param {number} n 
+   */
+  scalarNthRootClone(n) {
+    const newMatrix = new Matrix(this.cols, this.rows);
+
+    for (let i = 0; i < this.cols; i++) {
+      for (let j = 0; j < this.rows; j++) {
+        newMatrix.entries[i][j] = Math.pow(this.entries[i][j], 1 / n);
+      }
+    }
+
+    return newMatrix;
+  }
+
+  /**
    * Adds another matrix to this matrix
    * @param {Matrix} matrix 
    */

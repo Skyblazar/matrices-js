@@ -107,6 +107,14 @@ describe('Matrix Methods: Unit Tests', () => {
     expect(nthRootMatrix.entries).toEqual([[2, 2], [2, 2]]);
   });
 
+  it('scalarNthRootClone() - should create a new matrix with the nth root of all entries in this matrix', () => {
+    const newMatrix = new Matrix(2, 2).fill(8);
+    const nthRootMatrix = newMatrix.scalarNthRootClone(3);
+
+    expect(newMatrix.entries).toEqual([[8, 8], [8, 8]]);
+    expect(nthRootMatrix.entries).toEqual([[2, 2], [2, 2]]);
+  });
+
   it('add() - should add another matrix to this matrix', () => {
     expect(matrix.fill(0).set([], 100).add(new Matrix(2, 2).fill(100)).entries)
       .toEqual([[200, 200], [200, 200]]);
