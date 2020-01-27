@@ -59,6 +59,12 @@ describe('Matrix Methods: Unit Tests', () => {
     expect(newMatrix.cols).toEqual(cols);
   });
 
+  it('scalarSquare() - should calculate the square of all entries in this matrix', () => {
+    const squareMatrix = new Matrix(2, 2).fill(2).scalarSquare();
+
+    expect(squareMatrix.entries).toEqual([[4, 4], [4, 4]]);
+  });
+
   it('add() - should add another matrix to this matrix', () => {
     expect(matrix.fill(0).set([], 100).add(new Matrix(2, 2).fill(100)).entries)
       .toEqual([[200, 200], [200, 200]]);

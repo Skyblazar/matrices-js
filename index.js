@@ -118,6 +118,19 @@ class Matrix {
   }
 
   /**
+   * Calculates the square of all entries in this matrix
+   */
+  scalarSquare() {
+    for (let i = 0; i < this.rows; i++) {
+      for (let j = 0; j < this.cols; j++) {
+        this.entries[i][j] *= this.entries[i][j];
+      }
+    }
+
+    return this;
+  }
+
+  /**
    * Adds another matrix to this matrix
    * @param {Matrix} matrix 
    */
