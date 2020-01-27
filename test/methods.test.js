@@ -65,7 +65,7 @@ describe('Matrix Methods: Unit Tests', () => {
     expect(squareMatrix.entries).toEqual([[4, 4], [4, 4]]);
   });
 
-  it('scalarSquare() - should create a new matrix with the square of all entries in this matrix', () => {
+  it('scalarSquareClone() - should create a new matrix with the square of all entries in this matrix', () => {
     const newMatrix = new Matrix(2, 2).fill(2);
     const squareMatrix = newMatrix.scalarSquareClone();
 
@@ -127,11 +127,11 @@ describe('Matrix Methods: Unit Tests', () => {
     expect(newMatrix.cols).toEqual(cols);
   });
 
-  it('eye() - should create identity matrix', () => {
+  it('Matrix.eye() - should create identity matrix', () => {
     expect(Matrix.eye(2).entries).toEqual([[1, 0], [0, 1]]);
   });
 
-  it('random() - should create a matrix with random entries between min and max', () => {
+  it('Matrix.random() - should create a matrix with random entries between min and max', () => {
     const randomMatrix = Matrix.random(2, 2, 1, 10);
     expect(randomMatrix.rows).toEqual(2);
     expect(randomMatrix.cols).toEqual(2);
