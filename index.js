@@ -66,6 +66,12 @@ class Matrix {
   sum(index) {
     const [i, j] = index;
 
+    if (i >= this.rows || i < 0)
+      throw Error(`row index: ${i} is out of range for this matrix. select a row index between 0 and ${this.rows - 1}`);
+
+    if (j >= this.cols || j < 0)
+      throw Error(`column index: ${j} is out of range for this matrix. select a column index between 0 and ${this.cols - 1}`);
+
     if (i === undefined && j !== undefined)
       return this.entries.reduce((total, row) => total + row[j], 0);
     else if (i !== undefined && j === undefined)
