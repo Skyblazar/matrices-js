@@ -189,6 +189,21 @@ class Matrix {
   }
 
   /**
+   * Creates a new matrix with the square-root of all entries in this matrix
+   */
+  scalarSqrtClone() {
+    const newMatrix = new Matrix(this.cols, this.rows);
+
+    for (let i = 0; i < this.cols; i++) {
+      for (let j = 0; j < this.rows; j++) {
+        newMatrix.entries[i][j] = Math.sqrt(this.entries[i][j]);
+      }
+    }
+
+    return newMatrix;
+  }
+
+  /**
    * Adds another matrix to this matrix
    * @param {Matrix} matrix 
    */

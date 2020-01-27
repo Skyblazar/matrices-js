@@ -93,6 +93,14 @@ describe('Matrix Methods: Unit Tests', () => {
     expect(sqrtMatrix.entries).toEqual([[2, 2], [2, 2]]);
   });
 
+  it('scalarSqrtClone() - should create a new matrix with the square-root of all entries in this matrix', () => {
+    const newMatrix = new Matrix(2, 2).fill(4);
+    const sqrtMatrix = newMatrix.scalarSqrtClone();
+
+    expect(newMatrix.entries).toEqual([[4, 4], [4, 4]]);
+    expect(sqrtMatrix.entries).toEqual([[2, 2], [2, 2]]);
+  });
+
   it('add() - should add another matrix to this matrix', () => {
     expect(matrix.fill(0).set([], 100).add(new Matrix(2, 2).fill(100)).entries)
       .toEqual([[200, 200], [200, 200]]);
