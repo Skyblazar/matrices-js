@@ -101,6 +101,12 @@ describe('Matrix Methods: Unit Tests', () => {
     expect(sqrtMatrix.entries).toEqual([[2, 2], [2, 2]]);
   });
 
+  it('scalarNthRoot() - should calculate the nth root of all entries in this matrix', () => {
+    const nthRootMatrix = new Matrix(2, 2).fill(8).scalarNthRoot(3);
+
+    expect(nthRootMatrix.entries).toEqual([[2, 2], [2, 2]]);
+  });
+
   it('add() - should add another matrix to this matrix', () => {
     expect(matrix.fill(0).set([], 100).add(new Matrix(2, 2).fill(100)).entries)
       .toEqual([[200, 200], [200, 200]]);

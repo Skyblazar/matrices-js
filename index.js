@@ -204,6 +204,20 @@ class Matrix {
   }
 
   /**
+   * Calculates the nth root of all entries in this matrix
+   * @param {number} n 
+   */
+  scalarNthRoot(n) {
+    for (let i = 0; i < this.rows; i++) {
+      for (let j = 0; j < this.cols; j++) {
+        this.entries[i][j] = Math.pow(this.entries[i][j], 1 / n);
+      }
+    }
+
+    return this;
+  }
+
+  /**
    * Adds another matrix to this matrix
    * @param {Matrix} matrix 
    */
