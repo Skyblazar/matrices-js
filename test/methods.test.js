@@ -87,6 +87,12 @@ describe('Matrix Methods: Unit Tests', () => {
     expect(nthPowerMatrix.entries).toEqual([[8, 8], [8, 8]]);
   });
 
+  it('scalarSqrt() - should calculate the square-root of all entries in this matrix', () => {
+    const sqrtMatrix = new Matrix(2, 2).fill(4).scalarSqrt();
+
+    expect(sqrtMatrix.entries).toEqual([[2, 2], [2, 2]]);
+  });
+
   it('add() - should add another matrix to this matrix', () => {
     expect(matrix.fill(0).set([], 100).add(new Matrix(2, 2).fill(100)).entries)
       .toEqual([[200, 200], [200, 200]]);
