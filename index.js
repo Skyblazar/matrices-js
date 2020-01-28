@@ -253,6 +253,25 @@ class Matrix {
   }
 
   /**
+   * Creates a new matrix with entries equal to the addition of this matrix and another matrix
+   * @param {Matrix} matrix 
+   */
+  addClone(matrix) {
+    if (matrix.rows !== this.rows || matrix.cols !== this.cols)
+      throw Error(`The argument matrix must have rows: ${this.rows} and columns: ${this.cols}`);
+
+    const newMatrix = new Matrix(this.rows, this.cols);
+
+    for (let i = 0; i < this.rows; i++) {
+      for (let j = 0; j < this.cols; j++) {
+        newMatrix.entries[i][j] = this.entries[i][j] + matrix.entries[i][j];
+      }
+    }
+
+    return newMatrix;
+  }
+
+  /**
    * Subtracts another matrix from this matrix
    * @param {Matrix} matrix 
    */

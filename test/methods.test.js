@@ -36,6 +36,14 @@ describe('Matrix - Vector Operation Methods: Unit Tests', () => {
       .toEqual([[200, 200], [200, 200]]);
   });
 
+  it('addClone() - should create a new matrix with entries equal to the addition of this matrix and another matrix', () => {
+    const newMatrix = new Matrix(2, 2).fill(2);
+    const squareMatrix = newMatrix.addClone(new Matrix(2, 2).fill(2));
+
+    expect(newMatrix.entries).toEqual([[2, 2], [2, 2]]);
+    expect(squareMatrix.entries).toEqual([[4, 4], [4, 4]]);
+  });
+
   it('subtract() - should subtract another matrix from this matrix', () => {
     expect(matrix.fill(0).set([], 100).subtract(new Matrix(2, 2).fill(100)).entries)
       .toEqual([[0, 0], [0, 0]]);
@@ -64,10 +72,6 @@ describe('Matrix - Scalar Operation Methods: Unit Tests', () => {
     expect(matrix.fill(1).scalarMult(2).entries)
       .toEqual([[2, 2], [2, 2]]);
   });
-});
-
-describe('Matrix Create Methods: Unit Tests', () => {
-  const matrix = new Matrix(2, 2);
 });
 
 describe('Matrix - Scalar Function Methods: Unit Tests', () => {
