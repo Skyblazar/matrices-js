@@ -40,6 +40,11 @@ describe('Matrix - Vector Operation Methods: Unit Tests', () => {
     expect(matrix.fill(0).set([], 100).subtract(new Matrix(2, 2).fill(100)).entries)
       .toEqual([[0, 0], [0, 0]]);
   });
+
+  it('multiply() - should multiply this matrix with another matrix (this * matrix)', () => {
+    expect(matrix.fill(0).set([], 10).multiply(new Matrix(2, 1).fill(10)).entries)
+      .toEqual([[200], [200]]);
+  });
 });
 
 describe('Matrix - Scalar Operation Methods: Unit Tests', () => {
