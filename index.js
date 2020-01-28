@@ -268,6 +268,28 @@ class Matrix {
   }
 
   /**
+   * Multiplies this matrix with another matrix (this x matrix)
+   * @param {Matrix} matrix 
+   */
+  multiply(matrix) {
+    if (this.cols !== matrix.rows)
+      throw Error(`Dimensions mismatch`);
+
+    const product = new Matrix(this.rows, matrix.cols);
+
+    for (let i = 0; i < product.rows; i++) {
+      for (let j = 0; j < product.cols; j++) {
+        product.entries[i][j] = this.entries[i].reduce((total, x, k) => total + (x * matrix.entries[k][j]), 0);
+      }
+    }
+
+    // this.rows = product.rows;
+    // this.cols = product.cols;
+
+    return product;
+  }
+
+  /**
    * Adds a number to all entries of this matrix
    * @param {number} num 
    */
