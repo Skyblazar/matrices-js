@@ -1,6 +1,6 @@
 const Matrix = require('../index');
 
-describe('Matrix Methods: Unit Tests', () => {
+describe('Matrix Create Methods: Unit Tests', () => {
   const matrix = new Matrix(2, 2);
 
   it('fill() - should fill matrix with a number', () => {
@@ -26,38 +26,47 @@ describe('Matrix Methods: Unit Tests', () => {
   it('setMatrix() - should set all the values in the matrix to an array of entries', () => {
     expect(matrix.fill(0).setMatrix([[1, 2], [3, 4]]).entries).toEqual([[1, 2], [3, 4]]);
   });
+});
 
-  it('sum() - should sum a particular row, column or entire matrix', () => {
-    expect(matrix.fill(0).setMatrix([[1, 2], [3, 4]]).sum([])).toEqual(10);
-    expect(matrix.fill(0).setMatrix([[1, 2], [3, 4]]).sum([1,])).toEqual(7);
-    expect(matrix.fill(0).setMatrix([[1, 2], [3, 4]]).sum([, 1])).toEqual(6);
+describe('Matrix - Vector Operation Methods: Unit Tests', () => {
+  const matrix = new Matrix(2, 2);
+
+  it('add() - should add another matrix to this matrix', () => {
+    expect(matrix.fill(0).set([], 100).add(new Matrix(2, 2).fill(100)).entries)
+      .toEqual([[200, 200], [200, 200]]);
   });
 
-  it('transpose() - should transpose matrix', () => {
-    const rows = 3, cols = 2;
-    const newMatrix = new Matrix(rows, cols).fill(0).set([, 0], 100);
-    const matrixTranspose = newMatrix.transpose();
+  it('subtract() - should subtract another matrix from this matrix', () => {
+    expect(matrix.fill(0).set([], 100).subtract(new Matrix(2, 2).fill(100)).entries)
+      .toEqual([[0, 0], [0, 0]]);
+  });
+});
 
-    expect(matrixTranspose.entries).toEqual([[100, 100, 100], [0, 0, 0]]);
-    expect(matrixTranspose.rows).toEqual(cols);
-    expect(matrixTranspose.cols).toEqual(rows);
+describe('Matrix - Scalar Operation Methods: Unit Tests', () => {
+  const matrix = new Matrix(2, 2);
 
-    expect(newMatrix.rows).toEqual(cols);
-    expect(newMatrix.cols).toEqual(rows);
+  it('scalarAdd() - should add a number to all entries of this matrix', () => {
+    expect(matrix.fill(0).set([], 100).scalarAdd(200).entries)
+      .toEqual([[300, 300], [300, 300]]);
   });
 
-  it('transposeClone() - should transpose original matrix and return a new one', () => {
-    const rows = 3, cols = 2;
-    const newMatrix = new Matrix(rows, cols).fill(0).set([, 0], 100);
-    const matrixTranspose = newMatrix.transposeClone();
-
-    expect(matrixTranspose.entries).toEqual([[100, 100, 100], [0, 0, 0]]);
-    expect(matrixTranspose.rows).toEqual(cols);
-    expect(matrixTranspose.cols).toEqual(rows);
-
-    expect(newMatrix.rows).toEqual(rows);
-    expect(newMatrix.cols).toEqual(cols);
+  it('scalarSubtract() - should subtract a number from all entries of this matrix', () => {
+    expect(matrix.fill(0).set([], 100).scalarSubtract(200).entries)
+      .toEqual([[-100, -100], [-100, -100]]);
   });
+
+  it('scalarMult() - should multiply all entries of this matrix with a number', () => {
+    expect(matrix.fill(1).scalarMult(2).entries)
+      .toEqual([[2, 2], [2, 2]]);
+  });
+});
+
+describe('Matrix Create Methods: Unit Tests', () => {
+  const matrix = new Matrix(2, 2);
+});
+
+describe('Matrix - Scalar Function Methods: Unit Tests', () => {
+  const matrix = new Matrix(2, 2);
 
   it('scalarSquare() - should calculate the square of all entries in this matrix', () => {
     const squareMatrix = new Matrix(2, 2).fill(2).scalarSquare();
@@ -114,31 +123,10 @@ describe('Matrix Methods: Unit Tests', () => {
     expect(newMatrix.entries).toEqual([[8, 8], [8, 8]]);
     expect(nthRootMatrix.entries).toEqual([[2, 2], [2, 2]]);
   });
+});
 
-  it('add() - should add another matrix to this matrix', () => {
-    expect(matrix.fill(0).set([], 100).add(new Matrix(2, 2).fill(100)).entries)
-      .toEqual([[200, 200], [200, 200]]);
-  });
-
-  it('subtract() - should subtract another matrix from this matrix', () => {
-    expect(matrix.fill(0).set([], 100).subtract(new Matrix(2, 2).fill(100)).entries)
-      .toEqual([[0, 0], [0, 0]]);
-  });
-
-  it('scalarAdd() - should add a number to all entries of this matrix', () => {
-    expect(matrix.fill(0).set([], 100).scalarAdd(200).entries)
-      .toEqual([[300, 300], [300, 300]]);
-  });
-
-  it('scalarSubtract() - should subtract a number from all entries of this matrix', () => {
-    expect(matrix.fill(0).set([], 100).scalarSubtract(200).entries)
-      .toEqual([[-100, -100], [-100, -100]]);
-  });
-
-  it('scalarMult() - should multiply all entries of this matrix with a number', () => {
-    expect(matrix.fill(1).scalarMult(2).entries)
-      .toEqual([[2, 2], [2, 2]]);
-  });
+describe('Matrix Boolean Methods: Unit Tests', () => {
+  const matrix = new Matrix(2, 2);
 
   it('isSquare() - should check if this matrix is a Square matrix', () => {
     expect(matrix.fill(0).isSquare()).toBe(true);
@@ -149,6 +137,10 @@ describe('Matrix Methods: Unit Tests', () => {
     expect(matrix.fill(0).isSameSizeAs(new Matrix(2, 2))).toBe(true);
     expect(matrix.fill(0).isSameSizeAs(new Matrix(2, 10))).toBe(false);
   });
+});
+
+describe('Matrix Static Methods: Unit Tests', () => {
+  const matrix = new Matrix(2, 2);
 
   it('Matrix.transpose() - should return transpose of a matrix', () => {
     const rows = 3, cols = 2;
@@ -207,6 +199,42 @@ describe('Matrix Methods: Unit Tests', () => {
     expect(randomMatrix.min().value).toBeGreaterThanOrEqual(1);
 
     // todo: add more tests here
+  });
+});
+
+describe('Other Matrix Methods: Unit Tests', () => {
+  const matrix = new Matrix(2, 2);
+
+  it('sum() - should sum a particular row, column or entire matrix', () => {
+    expect(matrix.fill(0).setMatrix([[1, 2], [3, 4]]).sum([])).toEqual(10);
+    expect(matrix.fill(0).setMatrix([[1, 2], [3, 4]]).sum([1,])).toEqual(7);
+    expect(matrix.fill(0).setMatrix([[1, 2], [3, 4]]).sum([, 1])).toEqual(6);
+  });
+
+  it('transpose() - should transpose matrix', () => {
+    const rows = 3, cols = 2;
+    const newMatrix = new Matrix(rows, cols).fill(0).set([, 0], 100);
+    const matrixTranspose = newMatrix.transpose();
+
+    expect(matrixTranspose.entries).toEqual([[100, 100, 100], [0, 0, 0]]);
+    expect(matrixTranspose.rows).toEqual(cols);
+    expect(matrixTranspose.cols).toEqual(rows);
+
+    expect(newMatrix.rows).toEqual(cols);
+    expect(newMatrix.cols).toEqual(rows);
+  });
+
+  it('transposeClone() - should transpose original matrix and return a new one', () => {
+    const rows = 3, cols = 2;
+    const newMatrix = new Matrix(rows, cols).fill(0).set([, 0], 100);
+    const matrixTranspose = newMatrix.transposeClone();
+
+    expect(matrixTranspose.entries).toEqual([[100, 100, 100], [0, 0, 0]]);
+    expect(matrixTranspose.rows).toEqual(cols);
+    expect(matrixTranspose.cols).toEqual(rows);
+
+    expect(newMatrix.rows).toEqual(rows);
+    expect(newMatrix.cols).toEqual(cols);
   });
 
   it('min() - should get the first minimum of this matrix', () => {
