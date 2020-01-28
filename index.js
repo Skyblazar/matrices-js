@@ -402,6 +402,72 @@ class Matrix {
   }
 
   /**
+   * Creates a new matrix with the square of all entries in another matrix
+   * @param {Matrix} matrix
+   */
+  static scalarSquare(matrix) {
+    const newMatrix = new Matrix(matrix.cols, matrix.rows);
+
+    for (let i = 0; i < matrix.cols; i++) {
+      for (let j = 0; j < matrix.rows; j++) {
+        newMatrix.entries[i][j] = matrix.entries[i][j] * matrix.entries[i][j];
+      }
+    }
+
+    return newMatrix;
+  }
+
+  /**
+   * Creates a new matrix with the nth power of all entries in another matrix
+   * @param {Matrix} matrix
+   * @param {number} n 
+   */
+  static scalarNthPower(matrix, n) {
+    const newMatrix = new Matrix(matrix.cols, matrix.rows);
+
+    for (let i = 0; i < matrix.cols; i++) {
+      for (let j = 0; j < matrix.rows; j++) {
+        newMatrix.entries[i][j] = Math.pow(matrix.entries[i][j], n);
+      }
+    }
+
+    return newMatrix;
+  }
+
+  /**
+   * Creates a new matrix with the square-root of all entries in another matrix
+   * @param {Matrix} matrix
+   */
+  static scalarSqrt(matrix) {
+    const newMatrix = new Matrix(matrix.cols, matrix.rows);
+
+    for (let i = 0; i < matrix.cols; i++) {
+      for (let j = 0; j < matrix.rows; j++) {
+        newMatrix.entries[i][j] = Math.sqrt(matrix.entries[i][j]);
+      }
+    }
+
+    return newMatrix;
+  }
+
+  /**
+   * Creates a new matrix with the nth root of all entries in another matrix
+   * @param {Matrix} matrix
+   * @param {number} n 
+   */
+  static scalarNthRoot(matrix, n) {
+    const newMatrix = new Matrix(matrix.cols, matrix.rows);
+
+    for (let i = 0; i < matrix.cols; i++) {
+      for (let j = 0; j < matrix.rows; j++) {
+        newMatrix.entries[i][j] = Math.pow(matrix.entries[i][j], 1 / n);
+      }
+    }
+
+    return newMatrix;
+  }
+
+  /**
    * Create Identity matrix
    * @param {number} size 
    */
