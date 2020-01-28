@@ -50,7 +50,9 @@ class Matrix {
     if (entries[0] && entries[0].length !== this.cols)
       throw Error(`The number of columns for entries should be: ${this.cols}`);
 
+    this.entries = [];
     for (let i = 0; i < this.rows; i++) {
+      this.entries[i] = [];
       for (let j = 0; j < this.cols; j++) {
         this.entries[i][j] = entries[i][j];
       }
@@ -283,10 +285,11 @@ class Matrix {
       }
     }
 
-    // this.rows = product.rows;
-    // this.cols = product.cols;
+    this.rows = product.rows;
+    this.cols = product.cols;
+    this.setMatrix(product.entries);
 
-    return product;
+    return this;
   }
 
   /**
