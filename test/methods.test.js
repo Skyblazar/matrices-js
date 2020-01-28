@@ -163,6 +163,38 @@ describe('Matrix Methods: Unit Tests', () => {
     expect(newMatrix.cols).toEqual(cols);
   });
 
+  it('Matrix.scalarSquare() - should create a new matrix with the square of all entries in another matrix', () => {
+    const newMatrix = new Matrix(2, 2).fill(2);
+    const squareMatrix = Matrix.scalarSquare(newMatrix);
+
+    expect(newMatrix.entries).toEqual([[2, 2], [2, 2]]);
+    expect(squareMatrix.entries).toEqual([[4, 4], [4, 4]]);
+  });
+
+  it('Matrix.scalarNthPower() - should create a new matrix with the nth power of all entries in another matrix', () => {
+    const newMatrix = new Matrix(2, 2).fill(2);
+    const nthPowerMatrix = Matrix.scalarNthPower(newMatrix, 3);
+
+    expect(newMatrix.entries).toEqual([[2, 2], [2, 2]]);
+    expect(nthPowerMatrix.entries).toEqual([[8, 8], [8, 8]]);
+  });
+
+  it('Matrix.scalarSqrt() - should create a new matrix with the square-root of all entries in another matrix', () => {
+    const newMatrix = new Matrix(2, 2).fill(4);
+    const sqrtMatrix = Matrix.scalarSqrt(newMatrix);
+
+    expect(newMatrix.entries).toEqual([[4, 4], [4, 4]]);
+    expect(sqrtMatrix.entries).toEqual([[2, 2], [2, 2]]);
+  });
+
+  it('Matrix.scalarNthRoot() - should create a new matrix with the nth root of all entries in another matrix', () => {
+    const newMatrix = new Matrix(2, 2).fill(8);
+    const nthRootMatrix = Matrix.scalarNthRoot(newMatrix, 3);
+
+    expect(newMatrix.entries).toEqual([[8, 8], [8, 8]]);
+    expect(nthRootMatrix.entries).toEqual([[2, 2], [2, 2]]);
+  });
+
   it('Matrix.eye() - should create identity matrix', () => {
     expect(Matrix.eye(2).entries).toEqual([[1, 0], [0, 1]]);
   });
