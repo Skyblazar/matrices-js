@@ -526,6 +526,13 @@ class Matrix {
   }
 
   /**
+   * Deep-Clone this matrix
+   */
+  clone() {
+    return new Matrix(this.rows, this.cols).setMatrix(this.entries);
+  }
+
+  /**
    * Returns a string representation of this matrix
    */
   toString() {

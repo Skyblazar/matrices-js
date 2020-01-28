@@ -255,4 +255,13 @@ describe('Other Matrix Methods: Unit Tests', () => {
       index: [1, 1]
     });
   });
+
+  it('clone() - deep-clone this matrix', () => {
+    const newMatrix = new Matrix(2, 2).fill(3);
+    const cloneMatrix = newMatrix.clone();
+
+    expect(cloneMatrix.entries).toEqual([[3, 3], [3, 3]]);
+    expect(newMatrix.entries === newMatrix.entries).toBe(true);
+    expect(newMatrix.entries === cloneMatrix.entries).not.toBe(true);
+  });
 });
