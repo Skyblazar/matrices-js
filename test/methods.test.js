@@ -171,7 +171,7 @@ describe('Matrix Static Methods: Unit Tests', () => {
     expect(Matrix.dimsEqual(matrix, matrix, newMatrix)).toBe(false);
   });
 
-  it('Matrix.dimsEqual() - should add all passed matrices', () => {
+  it('Matrix.add() - should add all passed matrices', () => {
     const newMatrix = new Matrix(2, 2).fill(10);
 
     expect(Matrix.add(newMatrix, newMatrix, newMatrix).entries).toEqual([[30, 30], [30, 30]]);
