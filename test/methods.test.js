@@ -177,6 +177,12 @@ describe('Matrix Static Methods: Unit Tests', () => {
     expect(Matrix.add(newMatrix, newMatrix, newMatrix).entries).toEqual([[30, 30], [30, 30]]);
   });
 
+  it('Matrix.subtract() - should subtract all passed matrices', () => {
+    const newMatrix = new Matrix(2, 2).fill(10);
+
+    expect(Matrix.subtract(newMatrix.clone().fill(100), newMatrix, newMatrix).entries).toEqual([[80, 80], [80, 80]]);
+  });
+
   it('Matrix.scalarSquare() - should create a new matrix with the square of all entries in another matrix', () => {
     const newMatrix = new Matrix(2, 2).fill(2);
     const squareMatrix = Matrix.scalarSquare(newMatrix);

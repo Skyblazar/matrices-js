@@ -479,6 +479,22 @@ class Matrix {
   }
 
   /**
+ * Subtracts all passed matrices
+ * @param {Matrix[]} matrices
+ */
+  static subtract(...matrices) {
+    if (!Matrix.dimsEqual(...matrices))
+      throw Error("Matrix dimensions must agree");
+
+    const diffMatrix = matrices[0];
+    for (let i = 1; i < matrices.length; i++) {
+      diffMatrix.subtract(matrices[i]);
+    }
+
+    return diffMatrix;
+  }
+
+  /**
    * Creates a new matrix with the square of all entries in another matrix
    * @param {Matrix} matrix
    */
