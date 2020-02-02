@@ -472,7 +472,7 @@ class Matrix {
 
     const sumMatrix = new Matrix(matrices[0].rows, matrices[0].cols);
     for (let i = 0; i < matrices.length; i++) {
-      sumMatrix.add(matrices[0]);
+      sumMatrix.add(matrices[i]);
     }
 
     return sumMatrix;
