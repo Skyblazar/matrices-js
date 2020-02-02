@@ -446,6 +446,23 @@ class Matrix {
   }
 
   /**
+   * Checks equality of dimensions for all passed matrices
+   * @param {Matrix[]} matrix
+   */
+  static dimsEqual(...matrix) {
+    if (matrix.length < 1)
+      return false;
+
+    const rows = matrix[0].rows, cols = matrix[0].cols;
+    for (let i = 0; i < matrix.length; i++) {
+      if (matrix[i].rows !== rows || matrix[i].cols !== cols)
+        return false;
+    }
+
+    return true;
+  }
+
+  /**
    * Creates a new matrix with the square of all entries in another matrix
    * @param {Matrix} matrix
    */

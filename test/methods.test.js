@@ -164,6 +164,13 @@ describe('Matrix Static Methods: Unit Tests', () => {
     expect(newMatrix.cols).toEqual(cols);
   });
 
+  it('Matrix.dimsEqual() - should check equality of dimensions for all passed matrices', () => {
+    const newMatrix = new Matrix(3, 2).fill(2);
+
+    expect(Matrix.dimsEqual(matrix, matrix, matrix)).toBe(true);
+    expect(Matrix.dimsEqual(matrix, matrix, newMatrix)).toBe(false);
+  });
+
   it('Matrix.scalarSquare() - should create a new matrix with the square of all entries in another matrix', () => {
     const newMatrix = new Matrix(2, 2).fill(2);
     const squareMatrix = Matrix.scalarSquare(newMatrix);
