@@ -463,6 +463,22 @@ class Matrix {
   }
 
   /**
+  * Adds all passed matrices
+  * @param {Matrix[]} matrices
+  */
+  static add(...matrices) {
+    if (!Matrix.dimsEqual(...matrices))
+      throw Error("Matrix dimensions must agree");
+
+    const sumMatrix = new Matrix(matrices[0].rows, matrices[0].cols);
+    for (let i = 0; i < matrices.length; i++) {
+      sumMatrix.add(matrices[0]);
+    }
+
+    return sumMatrix;
+  }
+
+  /**
    * Creates a new matrix with the square of all entries in another matrix
    * @param {Matrix} matrix
    */
