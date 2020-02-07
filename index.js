@@ -99,6 +99,19 @@ class Matrix {
   }
 
   /**
+   * Returns a matrix of column means
+   */
+  colMeans() {
+    const resultMatrix = new Matrix(1, this.cols);
+
+    for (let j = 0; j < this.cols; j++) {
+      resultMatrix.entries[0][j] = this.sum([, j]) / this.rows;
+    }
+
+    return resultMatrix;
+  }
+
+  /**
    * Transposes this matrix
    */
   transpose() {
