@@ -635,6 +635,21 @@ class Matrix {
   }
 
   /**
+   * Create a random diagonal matrix
+   * @param {number} size 
+   */
+  static randDiag(size, x0 = 0, x1 = 10, isInteger = true) {
+    const randDiagMatrix = new Matrix(size, size).fill(0);
+
+    for (let i = 0; i < size; i++) {
+      const randomVal = x0 + x1 * Math.random();
+      randDiagMatrix.entries[i][i] = isInteger ? Math.round(randomVal) : randomVal;
+    }
+
+    return randDiagMatrix;
+  }
+
+  /**
    * Creates a matrix with random entries between min and max
    * @param {number} rows 
    * @param {number} cols 

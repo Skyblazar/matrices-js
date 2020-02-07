@@ -219,6 +219,16 @@ describe('Matrix Static Methods: Unit Tests', () => {
     expect(Matrix.eye(2).entries).toEqual([[1, 0], [0, 1]]);
   });
 
+  it('Matrix.randDiag() - should create a random diagonal matrix', () => {
+    const randDiagMatrix = Matrix.randDiag(2);
+
+    // console.log(randDiagMatrix.entries);
+    expect(randDiagMatrix.rows).toEqual(2);
+    expect(randDiagMatrix.cols).toEqual(2);
+
+    // todo: add more tests
+  });
+
   it('Matrix.random() - should create a matrix with random entries between min and max', () => {
     const randomMatrix = Matrix.random(2, 2, 1, 10);
     expect(randomMatrix.rows).toEqual(2);
