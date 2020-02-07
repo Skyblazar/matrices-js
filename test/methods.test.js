@@ -239,6 +239,22 @@ describe('Other Matrix Methods: Unit Tests', () => {
     expect(matrix.fill(0).setMatrix([[1, 2], [3, 4]]).sum([, 1])).toEqual(6);
   });
 
+  it('rowMeans() - should return a matrix of row means', () => {
+    const m1 = new Matrix(2, 2).fill(1);
+    const m2 = new Matrix(4, 4).setMatrix([
+      [3, 5, 1, 3],
+      [4, 8, 2, 2],
+      [4, 5, 1, 10],
+      [5, 3, 10, 2]
+    ]);
+
+    const rowMeans1 = m1.rowMeans();
+    const rowMeans2 = m2.rowMeans();
+
+    expect(rowMeans1.entries).toEqual([[1], [1]]);
+    expect(rowMeans2.entries).toEqual([[3], [4], [5], [5]]);
+  });
+
   it('transpose() - should transpose matrix', () => {
     const rows = 3, cols = 2;
     const newMatrix = new Matrix(rows, cols).fill(0).set([, 0], 100);

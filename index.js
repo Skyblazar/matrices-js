@@ -86,6 +86,19 @@ class Matrix {
   }
 
   /**
+   * Returns a matrix of row means
+   */
+  rowMeans() {
+    const resultMatrix = new Matrix(this.rows, 1);
+
+    for (let i = 0; i < this.rows; i++) {
+      resultMatrix.entries[i][0] = this.sum([i,]) / this.cols;
+    }
+
+    return resultMatrix;
+  }
+
+  /**
    * Transposes this matrix
    */
   transpose() {
