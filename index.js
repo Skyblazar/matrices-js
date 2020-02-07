@@ -129,6 +129,23 @@ class Matrix {
   }
 
   /**
+   * Combine matrices vertically
+   * @param {Matrix} matrix 
+   */
+  rbind(matrix) {
+    if (this.cols !== matrix.cols)
+      throw Error("Matrices must have the same number of columns");
+
+    const combinedMatrix = new Matrix(this.rows + matrix.rows, this.cols);
+
+    for (let i = 0; i < combinedMatrix.rows; i++) {
+      combinedMatrix.entries[i] = i < this.rows ? [...this.entries[i]] : [...matrix.entries[i - this.rows]];
+    }
+
+    return combinedMatrix;
+  }
+
+  /**
    * Transposes this matrix
    */
   transpose() {
