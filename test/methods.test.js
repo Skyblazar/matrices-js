@@ -271,6 +271,22 @@ describe('Other Matrix Methods: Unit Tests', () => {
     expect(rowMeans2.entries).toEqual([[3, 4, 5, 5]]);
   });
 
+  it('cbind() - should combine matrices horizontally', () => {
+    const m1 = new Matrix(4, 1).fill(2);
+    const m2 = new Matrix(4, 2).fill(10);
+
+    const combinedMatrix = m1.cbind(m2);
+
+    expect(combinedMatrix.entries).toEqual(
+      [
+        [2, 10, 10],
+        [2, 10, 10],
+        [2, 10, 10],
+        [2, 10, 10]
+      ]
+    );
+  });
+
   it('transpose() - should transpose matrix', () => {
     const rows = 3, cols = 2;
     const newMatrix = new Matrix(rows, cols).fill(0).set([, 0], 100);

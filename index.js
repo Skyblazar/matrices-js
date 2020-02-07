@@ -112,6 +112,23 @@ class Matrix {
   }
 
   /**
+   * Combine matrices horizontally
+   * @param {Matrix} matrix 
+   */
+  cbind(matrix) {
+    if (this.rows !== matrix.rows)
+      throw Error("Matrices must have the same number of rows");
+
+    const combinedMatrix = new Matrix(this.rows, this.cols + matrix.cols);
+
+    for (let i = 0; i < this.rows; i++) {
+      combinedMatrix.entries[i] = [...this.entries[i], ...matrix.entries[i]];
+    }
+
+    return combinedMatrix;
+  }
+
+  /**
    * Transposes this matrix
    */
   transpose() {
