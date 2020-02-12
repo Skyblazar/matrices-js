@@ -1,6 +1,6 @@
 const Matrix = require('../index');
 
-describe('Matrix Create Methods: Unit Tests', () => {
+describe('Matrix - Create Methods: Unit Tests', () => {
   const matrix = new Matrix(2, 2);
 
   it('fill() - should fill matrix with a number', () => {
@@ -25,33 +25,6 @@ describe('Matrix Create Methods: Unit Tests', () => {
 
   it('setMatrix() - should set all the values in the matrix to an array of entries', () => {
     expect(matrix.fill(0).setMatrix([[1, 2], [3, 4]]).entries).toEqual([[1, 2], [3, 4]]);
-  });
-});
-
-describe('Matrix - Vector Operation Methods: Unit Tests', () => {
-  const matrix = new Matrix(2, 2);
-
-  it('add() - should add another matrix to this matrix', () => {
-    expect(matrix.fill(0).set([], 100).add(new Matrix(2, 2).fill(100)).entries)
-      .toEqual([[200, 200], [200, 200]]);
-  });
-
-  it('addClone() - should create a new matrix with entries equal to the addition of this matrix and another matrix', () => {
-    const newMatrix = new Matrix(2, 2).fill(2);
-    const squareMatrix = newMatrix.addClone(new Matrix(2, 2).fill(2));
-
-    expect(newMatrix.entries).toEqual([[2, 2], [2, 2]]);
-    expect(squareMatrix.entries).toEqual([[4, 4], [4, 4]]);
-  });
-
-  it('subtract() - should subtract another matrix from this matrix', () => {
-    expect(matrix.fill(0).set([], 100).subtract(new Matrix(2, 2).fill(100)).entries)
-      .toEqual([[0, 0], [0, 0]]);
-  });
-
-  it('multiply() - should multiply this matrix with another matrix (this * matrix)', () => {
-    expect(matrix.fill(0).set([], 10).multiply(new Matrix(2, 1).fill(10)).entries)
-      .toEqual([[200], [200]]);
   });
 });
 
@@ -134,7 +107,7 @@ describe('Matrix - Scalar Function Methods: Unit Tests', () => {
   });
 });
 
-describe('Matrix Boolean Methods: Unit Tests', () => {
+describe('Matrix - Boolean Methods: Unit Tests', () => {
   const matrix = new Matrix(2, 2);
 
   it('isSquare() - should check if this matrix is a Square matrix', () => {
@@ -148,7 +121,7 @@ describe('Matrix Boolean Methods: Unit Tests', () => {
   });
 });
 
-describe('Matrix Static Methods: Unit Tests', () => {
+describe('Matrix - Static Methods: Unit Tests', () => {
   const matrix = new Matrix(2, 2);
 
   it('Matrix.transpose() - should return transpose of a matrix', () => {
@@ -240,7 +213,7 @@ describe('Matrix Static Methods: Unit Tests', () => {
   });
 });
 
-describe('Other Matrix Methods: Unit Tests', () => {
+describe('Matrix - Other Methods: Unit Tests', () => {
   const matrix = new Matrix(2, 2);
 
   it('sum() - should sum a particular row, column or entire matrix', () => {
