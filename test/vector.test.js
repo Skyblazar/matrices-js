@@ -1,7 +1,8 @@
 const Matrix = require('../index');
 
 describe('Matrix - Vector Operation Methods: Unit Tests', () => {
-  const matrix = new Matrix(2, 2);
+  const matrix = new Matrix(2, 2).fill(10);
+  const largeMatrix = new Matrix(300, 300).fill(10);
 
   it('add() - should add another matrix to this matrix', () => {
     expect(matrix.fill(0).set([], 100).add(new Matrix(2, 2).fill(100)).entries)
@@ -24,5 +25,11 @@ describe('Matrix - Vector Operation Methods: Unit Tests', () => {
   it('multiply() - should multiply this matrix with another matrix (this * matrix)', () => {
     expect(matrix.fill(0).set([], 10).multiply(new Matrix(2, 1).fill(10)).entries)
       .toEqual([[200], [200]]);
+  });
+
+  it('multiplyAsync() - should multiply this matrix with another matrix (this * matrix)', async () => {
+    const result = await matrix.multiplyAsync(matrix);
+    console.log(result.entries)
+    // expect(result.entries[0].slice(0, 10)).toEqual(new Array(10).fill(1000));
   });
 });
