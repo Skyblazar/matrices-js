@@ -1,13 +1,12 @@
 class Matrix {
-
   constructor(rows = 0, cols = 0) {
     this.rows = rows;
     this.cols = cols;
 
-    /** 
-     * @type {number[][]} entries 
+    /**
+     * @type {number[][]} entries
      */
-    this.entries = new Array(rows).fill(0).map(() => new Array(cols).fill(0))
+    this.entries = new Array(rows).fill(0).map(() => new Array(cols).fill(0));
   }
 
   /**
@@ -15,35 +14,32 @@ class Matrix {
    * @param {number} num
    */
   fill(num) {
-    this.entries.forEach((col) => col = col.fill(num));
+    this.entries.forEach(col => (col = col.fill(num)));
 
     return this;
   }
 
   /**
    * Sets the value at a particular index, row, column or entire matrix
-   * @param {number[]} index 
-   * @param {number} num 
+   * @param {number[]} index
+   * @param {number} num
    */
   set(index, num) {
     const [i, j] = index;
 
     if (i === undefined && j !== undefined)
-      this.entries.forEach((row) => row[j] = num);
-    else if (i !== undefined && j === undefined)
-      this.entries[i].fill(num);
-    else if (i === undefined && j === undefined)
-      this.fill(num);
-    else
-      this.entries[i][j] = num;
+      this.entries.forEach(row => (row[j] = num));
+    else if (i !== undefined && j === undefined) this.entries[i].fill(num);
+    else if (i === undefined && j === undefined) this.fill(num);
+    else this.entries[i][j] = num;
 
     return this;
   }
 
   /**
-  * Sets the entries of this matrix
-  * @param {number[][]} entries 
-  */
+   * Sets the entries of this matrix
+   * @param {number[][]} entries
+   */
   setMatrix(entries) {
     if (entries.length !== this.rows)
       throw Error(`The number of rows for entries should be: ${this.rows}`);
@@ -69,18 +65,27 @@ class Matrix {
     const [i, j] = index;
 
     if (i >= this.rows || i < 0)
-      throw Error(`row index: ${i} is out of range for this matrix. select a row index between 0 and ${this.rows - 1}`);
+      throw Error(
+        `row index: ${i} is out of range for this matrix. select a row index between 0 and ${this
+          .rows - 1}`
+      );
 
     if (j >= this.cols || j < 0)
-      throw Error(`column index: ${j} is out of range for this matrix. select a column index between 0 and ${this.cols - 1}`);
+      throw Error(
+        `column index: ${j} is out of range for this matrix. select a column index between 0 and ${this
+          .cols - 1}`
+      );
 
     if (i === undefined && j !== undefined)
       return this.entries.reduce((total, row) => total + row[j], 0);
     else if (i !== undefined && j === undefined)
       return this.entries[i].reduce((total, val) => total + val, 0);
     else if (i === undefined && j === undefined)
-      return this.entries.reduce((total, row) =>
-        total + row.reduce((rowTotal, val) => rowTotal + val, 0), 0);
+      return this.entries.reduce(
+        (total, row) =>
+          total + row.reduce((rowTotal, val) => rowTotal + val, 0),
+        0
+      );
 
     return this.entries[i][j];
   }
@@ -92,7 +97,7 @@ class Matrix {
     const resultMatrix = new Matrix(this.rows, 1);
 
     for (let i = 0; i < this.rows; i++) {
-      resultMatrix.entries[i][0] = this.sum([i,]) / this.cols;
+      resultMatrix.entries[i][0] = this.sum([i]) / this.cols;
     }
 
     return resultMatrix;
@@ -113,7 +118,7 @@ class Matrix {
 
   /**
    * Combine matrices horizontally
-   * @param {Matrix} matrix 
+   * @param {Matrix} matrix
    */
   cbind(matrix) {
     if (this.rows !== matrix.rows)
@@ -130,7 +135,7 @@ class Matrix {
 
   /**
    * Combine matrices vertically
-   * @param {Matrix} matrix 
+   * @param {Matrix} matrix
    */
   rbind(matrix) {
     if (this.cols !== matrix.cols)
@@ -139,7 +144,10 @@ class Matrix {
     const combinedMatrix = new Matrix(this.rows + matrix.rows, this.cols);
 
     for (let i = 0; i < combinedMatrix.rows; i++) {
-      combinedMatrix.entries[i] = i < this.rows ? [...this.entries[i]] : [...matrix.entries[i - this.rows]];
+      combinedMatrix.entries[i] =
+        i < this.rows
+          ? [...this.entries[i]]
+          : [...matrix.entries[i - this.rows]];
     }
 
     return combinedMatrix;
@@ -209,7 +217,7 @@ class Matrix {
 
   /**
    * Calculates the nth power of all entries in this matrix
-   * @param {number} n 
+   * @param {number} n
    */
   scalarNthPower(n) {
     for (let i = 0; i < this.rows; i++) {
@@ -223,7 +231,7 @@ class Matrix {
 
   /**
    * Creates a new matrix with the nth power of all entries in this matrix
-   * @param {number} n 
+   * @param {number} n
    */
   scalarNthPowerClone(n) {
     const newMatrix = new Matrix(this.cols, this.rows);
@@ -267,7 +275,7 @@ class Matrix {
 
   /**
    * Calculates the nth root of all entries in this matrix
-   * @param {number} n 
+   * @param {number} n
    */
   scalarNthRoot(n) {
     for (let i = 0; i < this.rows; i++) {
@@ -281,7 +289,7 @@ class Matrix {
 
   /**
    * Creates a new matrix with the nth root of all entries in this matrix
-   * @param {number} n 
+   * @param {number} n
    */
   scalarNthRootClone(n) {
     const newMatrix = new Matrix(this.cols, this.rows);
@@ -297,11 +305,13 @@ class Matrix {
 
   /**
    * Adds another matrix to this matrix
-   * @param {Matrix} matrix 
+   * @param {Matrix} matrix
    */
   add(matrix) {
     if (matrix.rows !== this.rows || matrix.cols !== this.cols)
-      throw Error(`The argument matrix must have rows: ${this.rows} and columns: ${this.cols}`);
+      throw Error(
+        `The argument matrix must have rows: ${this.rows} and columns: ${this.cols}`
+      );
 
     for (let i = 0; i < this.rows; i++) {
       for (let j = 0; j < this.cols; j++) {
@@ -314,11 +324,13 @@ class Matrix {
 
   /**
    * Creates a new matrix with entries equal to the addition of this matrix and another matrix
-   * @param {Matrix} matrix 
+   * @param {Matrix} matrix
    */
   addClone(matrix) {
     if (matrix.rows !== this.rows || matrix.cols !== this.cols)
-      throw Error(`The argument matrix must have rows: ${this.rows} and columns: ${this.cols}`);
+      throw Error(
+        `The argument matrix must have rows: ${this.rows} and columns: ${this.cols}`
+      );
 
     const newMatrix = new Matrix(this.rows, this.cols);
 
@@ -333,11 +345,13 @@ class Matrix {
 
   /**
    * Subtracts another matrix from this matrix
-   * @param {Matrix} matrix 
+   * @param {Matrix} matrix
    */
   subtract(matrix) {
     if (matrix.rows !== this.rows || matrix.cols !== this.cols)
-      throw Error(`The argument matrix must have rows: ${this.rows} and columns: ${this.cols}`);
+      throw Error(
+        `The argument matrix must have rows: ${this.rows} and columns: ${this.cols}`
+      );
 
     for (let i = 0; i < this.rows; i++) {
       for (let j = 0; j < this.cols; j++) {
@@ -350,17 +364,19 @@ class Matrix {
 
   /**
    * Multiplies this matrix with another matrix (this x matrix)
-   * @param {Matrix} matrix 
+   * @param {Matrix} matrix
    */
   multiply(matrix) {
-    if (this.cols !== matrix.rows)
-      throw Error(`Dimensions mismatch`);
+    if (this.cols !== matrix.rows) throw Error(`Dimensions mismatch`);
 
     const product = new Matrix(this.rows, matrix.cols);
 
     for (let i = 0; i < product.rows; i++) {
       for (let j = 0; j < product.cols; j++) {
-        product.entries[i][j] = this.entries[i].reduce((total, x, k) => total + (x * matrix.entries[k][j]), 0);
+        product.entries[i][j] = this.entries[i].reduce(
+          (total, x, k) => total + x * matrix.entries[k][j],
+          0
+        );
       }
     }
 
@@ -372,8 +388,50 @@ class Matrix {
   }
 
   /**
+   * Concurrently ultiplies this matrix with another matrix (this x matrix)
+   * @param {Matrix} matrix
+   */
+  async multiplyAsync(matrix) {
+    if (this.cols !== matrix.rows) throw Error(`Dimensions mismatch`);
+
+    const product = new Matrix(this.rows, matrix.cols);
+
+    const entryPromises = [];
+
+    for (let i = 0; i < product.rows; i++) {
+      for (let j = 0; j < product.cols; j++) {
+        // product.entries[i][j] =
+        entryPromises.push(
+          new Promise(resolve => {
+            resolve({
+              value: this.entries[i].reduce(
+                (total, x, k) => total + x * matrix.entries[k][j],
+                0
+              ),
+              index: [i, j]
+            });
+          })
+        );
+      }
+    }
+
+    const entries = await Promise.all(entryPromises);
+
+    for (let i = 0; i < entries.length; i++) {
+      const [row, col] = entries[i].index;
+      product.entries[row][col] = entries[i].value;
+    }
+
+    this.rows = product.rows;
+    this.cols = product.cols;
+    this.setMatrix(product.entries);
+
+    return this;
+  }
+
+  /**
    * Adds a number to all entries of this matrix
-   * @param {number} num 
+   * @param {number} num
    */
   scalarAdd(num) {
     for (let i = 0; i < this.rows; i++) {
@@ -387,7 +445,7 @@ class Matrix {
 
   /**
    * Subtracts a number from all entries of this matrix
-   * @param {number} num 
+   * @param {number} num
    */
   scalarSubtract(num) {
     for (let i = 0; i < this.rows; i++) {
@@ -401,7 +459,7 @@ class Matrix {
 
   /**
    * multiply all entries of this matrix with a number
-   * @param {number} num 
+   * @param {number} num
    */
   scalarMult(num) {
     for (let i = 0; i < this.rows; i++) {
@@ -422,7 +480,7 @@ class Matrix {
 
   /**
    * Checks if this matrix has the same size as another matrix
-   * @param {Matrix} matrix 
+   * @param {Matrix} matrix
    */
   isSameSizeAs(matrix) {
     return this.rows === matrix.rows && this.cols === matrix.cols;
@@ -434,11 +492,9 @@ class Matrix {
   isEye() {
     for (let i = 0; i < this.rows; i++) {
       for (let j = 0; j < this.cols; j++) {
-        if (i === j && this.entries[i][j] !== 1)
-          return false;
+        if (i === j && this.entries[i][j] !== 1) return false;
 
-        if (i !== j && this.entries[i][j] !== 0)
-          return false;
+        if (i !== j && this.entries[i][j] !== 0) return false;
       }
     }
 
@@ -510,22 +566,21 @@ class Matrix {
    * @param {Matrix[]} matrix
    */
   static dimsEqual(...matrix) {
-    if (matrix.length < 1)
-      return false;
+    if (matrix.length < 1) return false;
 
-    const rows = matrix[0].rows, cols = matrix[0].cols;
+    const rows = matrix[0].rows,
+      cols = matrix[0].cols;
     for (let i = 0; i < matrix.length; i++) {
-      if (matrix[i].rows !== rows || matrix[i].cols !== cols)
-        return false;
+      if (matrix[i].rows !== rows || matrix[i].cols !== cols) return false;
     }
 
     return true;
   }
 
   /**
-  * Adds all passed matrices
-  * @param {Matrix[]} matrices
-  */
+   * Adds all passed matrices
+   * @param {Matrix[]} matrices
+   */
   static add(...matrices) {
     if (!Matrix.dimsEqual(...matrices))
       throw Error("Matrix dimensions must agree");
@@ -539,9 +594,9 @@ class Matrix {
   }
 
   /**
- * Subtracts all passed matrices
- * @param {Matrix[]} matrices
- */
+   * Subtracts all passed matrices
+   * @param {Matrix[]} matrices
+   */
   static subtract(...matrices) {
     if (!Matrix.dimsEqual(...matrices))
       throw Error("Matrix dimensions must agree");
@@ -573,7 +628,7 @@ class Matrix {
   /**
    * Creates a new matrix with the nth power of all entries in another matrix
    * @param {Matrix} matrix
-   * @param {number} n 
+   * @param {number} n
    */
   static scalarNthPower(matrix, n) {
     const newMatrix = new Matrix(matrix.cols, matrix.rows);
@@ -606,7 +661,7 @@ class Matrix {
   /**
    * Creates a new matrix with the nth root of all entries in another matrix
    * @param {Matrix} matrix
-   * @param {number} n 
+   * @param {number} n
    */
   static scalarNthRoot(matrix, n) {
     const newMatrix = new Matrix(matrix.cols, matrix.rows);
@@ -622,7 +677,7 @@ class Matrix {
 
   /**
    * Create Identity matrix
-   * @param {number} size 
+   * @param {number} size
    */
   static eye(size) {
     const identityMatrix = new Matrix(size, size).fill(0);
@@ -636,14 +691,16 @@ class Matrix {
 
   /**
    * Create a random diagonal matrix
-   * @param {number} size 
+   * @param {number} size
    */
   static randDiag(size, x0 = 0, x1 = 10, isInteger = true) {
     const randDiagMatrix = new Matrix(size, size).fill(0);
 
     for (let i = 0; i < size; i++) {
       const randomVal = x0 + x1 * Math.random();
-      randDiagMatrix.entries[i][i] = isInteger ? Math.round(randomVal) : randomVal;
+      randDiagMatrix.entries[i][i] = isInteger
+        ? Math.round(randomVal)
+        : randomVal;
     }
 
     return randDiagMatrix;
@@ -651,10 +708,10 @@ class Matrix {
 
   /**
    * Creates a matrix with random entries between min and max
-   * @param {number} rows 
-   * @param {number} cols 
-   * @param {number} min 
-   * @param {number} max 
+   * @param {number} rows
+   * @param {number} cols
+   * @param {number} min
+   * @param {number} max
    */
   static random(rows, cols, min, max) {
     const randomMatrix = new Matrix(rows, cols);
