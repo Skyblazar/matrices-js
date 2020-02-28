@@ -54,7 +54,9 @@ describe("Matrix - Vector Operation Methods: Unit Tests", () => {
   it("multiplyAsync() - should multiply this matrix with another matrix (this * matrix)", async () => {
     const newMatrix = new Matrix(2, 2).fill(1);
     const result = await newMatrix.multiplyAsync(newMatrix);
-    console.log(result.entries);
-    // expect(result.entries[0].slice(0, 10)).toEqual(new Array(10).fill(1000));
+    expect(result.entries).toEqual([
+      [2, 2],
+      [2, 2]
+    ]);
   });
 });

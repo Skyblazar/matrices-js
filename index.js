@@ -402,16 +402,15 @@ class Matrix {
       for (let j = 0; j < product.cols; j++) {
         // product.entries[i][j] =
         entryPromises.push(
-          (i, j) =>
-            new Promise(resolve => {
-              resolve({
-                value: this.entries[i].reduce(
-                  (total, x, k) => total + x * matrix.entries[k][j],
-                  0
-                ),
-                index: [i, j]
-              });
-            })
+          new Promise(resolve => {
+            resolve({
+              value: this.entries[i].reduce(
+                (total, x, k) => total + x * matrix.entries[k][j],
+                0
+              ),
+              index: [i, j]
+            });
+          })
         );
       }
     }
